@@ -9,7 +9,7 @@ class MessageList extends Component {
   render(){
     return (
       <div>
-        MessageList Component
+        RACTIKARN SASOH
       </div>
     )
   }
