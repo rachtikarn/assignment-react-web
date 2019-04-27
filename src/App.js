@@ -2,8 +2,21 @@ import React, { Component } from 'react';
 import Header from '../src/components/Header';
 import MessageList from './components/MessageList';
 import MessageBox from './components/MessageBox';
+import axios from 'axios';
 // import firebase from 'firebase';
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {member: ""}
+  }
+  componentDidMount(){
+    axios.get("https://us-central1-assignment-web-tech-fff2c.cloudfunctions.net/api").then(res=>{
+      {this.setState({member: res.data})} 
+      console.log(this.member);
+    })
+  }
+
  render() {
    return (
     <div className="container">
