@@ -1,14 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 class Header extends Component {
-  render(){
+  render() {
     return (
-      <nav className="navbar">
-        <div className="navbar-brand">
-          <a className="navbar-item" href="https://github.com">
-            {this.props.title}
-          </a>
+      <section class="hero">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+             {this.props.title}
+          </h1>
+            <h2 class="subtitle">
+             {this.props.sub}
+          </h2>
+          </div>
         </div>
-      </nav>
+      </section>
+      
     )
   }
 }
