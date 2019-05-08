@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+var BtnStyle = {
+  float: "right",
+  marginRight: 2
+}
+
 class MessageBox extends Component {
   constructor(props) {
     super(props);
@@ -9,13 +14,12 @@ class MessageBox extends Component {
     this.state = {
       message: '',
       l: ''
-    };
+    }
   }
   componentDidMount() {
-    axios.get("https://us-central1-dcw-my-assignment.cloudfunctions.net/api/api/member").then(res => {
+    axios.get("https://us-central1-assignment-web-tech-fff2c.cloudfunctions.net/api/api/member").then(res => {
       this.l = res.data.length
       console.log(res.data);
-      this.state(res.data.length)
     });
   }
   onChange(e) {
@@ -24,7 +28,7 @@ class MessageBox extends Component {
     });
   }
   onKeyUp(e) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13&&(e.target.value) !== '') {
       e.preventDefault();
       axios.post("https://us-central1-assignment-web-tech-fff2c.cloudfunctions.net/api/api/member",{
         Id : this.l,
@@ -32,13 +36,13 @@ class MessageBox extends Component {
       }).then(res => {
         this.setState({
           message: ''
+
         })
       });
     }
   }
   render() {
     return (
-      
       <form>
         <div>
           <div class="control">
@@ -48,16 +52,6 @@ class MessageBox extends Component {
               value={this.state.message}>
               ></textarea>
           </div>
-          <br/>
-          {/* <div class="select is-multiple" >
-            <select multiple size="3">
-              <option value="cat1">cat1</option>
-              <option value="cat2">cat2</option>
-              <option value="cat3">cat3</option>
-              <option value="cat4">cat4</option>
-              <option value="cat5">cat5</option>
-            </select>
-          </div> */}
         </div>
       </form>
     )

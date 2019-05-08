@@ -10,14 +10,14 @@ var BtnStyle = {
 class Message extends Component {
   constructor(props) {
     super(props);
+    this.onClickDelete = this.onClickDelete.bind(this);
     this.state = {
       cats: []
     }
-    this.onClickDelete = this.onClickDelete.bind(this);
   }
   onClickDelete(e) {
     e.preventDefault();
-    axios.delete("https://us-central1-assignment-web-tech-fff2c.cloudfunctions.net/api/api/member" + this.props.obj.ID, {
+    axios.delete("https://us-central1-assignment-web-tech-fff2c.cloudfunctions.net/api/api/member/" + this.props.obj.ID, {
     }).then(res => {
       this.setState({
         cats: ''
